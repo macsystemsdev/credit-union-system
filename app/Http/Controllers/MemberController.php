@@ -43,7 +43,7 @@ class MemberController extends Controller
         $request->validate([
             'account_number' => 'required|unique:members',
             'name' => 'required|string|max:255',
-            'signature' => 'required|image|mimes:jpeg,png,jpg|max:1024|dimensions:min_width=800,min_height=400,max_width=2000,max_height=1500'
+            'signature' => ['required', 'file', 'image', 'mimetypes:image/jpeg,image/png', 'max:1024', 'dimensions:min_width=800,min_height=400,max_width=2000,max_height=1500']
         ], [
             'account_number.unique' => 'That account number is already registered.',
             'signature.image' => 'The signature must be an image file.',
@@ -84,12 +84,6 @@ class MemberController extends Controller
         // The detail page needs the signature and ownership context together.
         $member->load(['signature', 'creator.branch']);
 
-        ActivityLog::create([
-            'user_id' => auth()->user()->id,
-            'action' => 'VIEW_MEMBER',
-            'description' => 'Viewed member ' . $member->account_number
-        ]);
-
         return view('members.show', compact('member'));
     }
 
@@ -108,7 +102,7 @@ class MemberController extends Controller
         abort_unless(auth()->user()->canManageMember($member), 403);
 
         $request->validate([
-            'signature' => 'nullable|image|mimes:jpeg,png,jpg|max:1024|dimensions:min_width=800,min_height=400,max_width=2000,max_height=1500'
+            'signature' => ['nullable', 'file', 'image', 'mimetypes:image/jpeg,image/png', 'max:1024', 'dimensions:min_width=800,min_height=400,max_width=2000,max_height=1500']
         ], [
             'signature.image' => 'The signature must be an image file.',
             'signature.mimes' => 'The signature must be a jpeg, png, or jpg file.',
@@ -231,20 +225,22 @@ class MemberController extends Controller
 
         $signatureDisk = $this->resolveSignatureDisk($member->signature->image_path);
 
-        if ($signatureDisk) {
-            return Storage::disk($signatureDisk)->response($member->signature->image_path);
+        if (! $signatureDisk) {
+            abort(404);
         }
 
-        abort(404);
+        // F50: image access is logged here, not on the show() page. Direct URL
+        // access to this route now leaves an audit record.
+        ActivityLog::create([
+            'user_id' => auth()->user()->id,
+            'action' => 'VIEW_MEMBER',
+            'description' => 'Viewed signature card for ' . $member->account_number,
+        ]);
+
+        return Storage::disk($signatureDisk)->response($member->signature->image_path);
     }
 
-    /**
-     * Scope member visibility by user role.
-     *
-     * Central admin is intentionally excluded from member-card access.
-     * Branch admins and staff can only see members created inside their own branch.
-     */
-    private function buildVisibleMembersQuery($user, ?string $search = null): Builder
+        private function buildVisibleMembersQuery($user, ?string $search = null): Builder
     {
         $query = Member::with(['creator.branch', 'signature.creator.branch']);
 
