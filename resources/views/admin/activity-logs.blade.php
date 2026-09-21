@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', config('app.name', 'SignatureSuite') . ' — Activity Logs')
+@section('title', config('app.name') . ' — Activity Logs')
 @section('page-heading', 'Activity Logs')
 
 @section('content')

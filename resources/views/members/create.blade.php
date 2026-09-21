@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', config('app.name', 'SignatureSuite') . ' - Add Member')
+@section('title', config('app.name') . ' - Add Member')
 @section('page-heading', 'Add Member')
 
 @section('content')

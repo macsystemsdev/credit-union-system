@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', config('app.name', 'SignatureSuite') . ' — Sign In')
+@section('title', config('app.name') . ' — Sign In')
 
 @section('content')
     <div class="flex h-full flex-col justify-center gap-6">

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', config('app.name', 'SignatureSuite') . ' - Delete Member')
+@section('title', config('app.name') . ' - Delete Member')
 @section('page-heading', 'Delete Member')
 
 @section('content')

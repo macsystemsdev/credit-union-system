@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', config('app.name', 'SignatureSuite') . ' - Change Temporary Password')
+@section('title', config('app.name') . ' - Change Temporary Password')
 @section('page-heading', 'Change Temporary Password')
 
 @section('content')

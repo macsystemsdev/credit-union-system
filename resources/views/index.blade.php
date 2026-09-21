@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{{ config('app.name', 'SignatureSuite') }} — Staff & Signature Cards</title>
+    <title>{{ config('app.name') }} — Staff & Signature Cards</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -1525,7 +1525,7 @@
             <nav class="mx-auto flex max-w-7xl items-center justify-between gap-4">
                 <a href="{{ url('/') }}" class="flex min-w-0 items-center gap-3">
                     <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-[#1b1b18] text-sm font-semibold text-white dark:bg-[#EDEDEC] dark:text-[#1b1b18]">SS</span>
-                    <span class="truncate text-sm font-semibold text-[#1b1b18] dark:text-[#EDEDEC]">{{ config('app.name', 'SignatureSuite') }}</span>
+                    <span class="truncate text-sm font-semibold text-[#1b1b18] dark:text-[#EDEDEC]">{{ config('app.name') }}</span>
                 </a>
                 @auth
                     <a href="{{ url('/dashboard') }}"
@@ -1640,12 +1640,12 @@
             <div>
                 <div class="flex items-center gap-3">
                     <span class="flex h-9 w-9 items-center justify-center rounded-2xl bg-[#1b1b18] text-xs font-semibold text-white dark:bg-[#EDEDEC] dark:text-[#1b1b18]">SS</span>
-                    <p class="font-semibold text-[#1b1b18] dark:text-[#EDEDEC]">{{ config('app.name', 'SignatureSuite') }}</p>
+                    <p class="font-semibold text-[#1b1b18] dark:text-[#EDEDEC]">{{ config('app.name') }}</p>
                 </div>
                 <p class="mt-3 max-w-xl leading-6">Secure member records, staff access, and signature-card workflows for credit union operations.</p>
             </div>
             <div class="flex flex-col gap-2 md:text-right">
-                <p>&copy; {{ date('Y') }} {{ config('app.name', 'SignatureSuite') }}. All rights reserved.</p>
+                <p>&copy; {{ date('Y') }} {{ config('app.name') }}. All rights reserved.</p>
                 <p>Built for branch teams and administrators.</p>
             </div>
         </div>

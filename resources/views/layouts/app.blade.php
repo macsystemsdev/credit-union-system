@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title', config('app.name', 'SignatureSuite'))</title>
+    <title>@yield('title', config('app.name'))</title>
     <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -16,7 +16,7 @@
                 <div class="flex items-center gap-3 border-b border-white/10 px-6 py-6">
                     <div class="flex h-12 w-12 items-center justify-center rounded-3xl bg-emerald-500/15 text-emerald-200 font-semibold">SS</div>
                     <div>
-                        <p class="text-xs uppercase tracking-[0.3em] text-slate-400">{{ config('app.name', 'SignatureSuite') }}</p>
+                        <p class="text-xs uppercase tracking-[0.3em] text-slate-400">{{ config('app.name') }}</p>
                         <p class="mt-1 text-xl font-semibold">Member Hub</p>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
                 <header class="bg-white border-b border-slate-200 shadow-sm">
                     <div class="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-4 sm:px-6 lg:px-8 lg:flex-row lg:items-center lg:justify-between">
                         <div>
-                            <p class="text-xs uppercase tracking-[0.3em] text-slate-500">{{ config('app.name', 'SignatureSuite') }}</p>
+                            <p class="text-xs uppercase tracking-[0.3em] text-slate-500">{{ config('app.name') }}</p>
                             <h1 class="mt-2 text-2xl font-semibold text-slate-900">@yield('page-heading', 'Dashboard')</h1>
                         </div>
                         <div class="flex flex-wrap items-center gap-3">
@@ -125,7 +125,7 @@
             <div class="mx-auto grid w-full max-w-6xl gap-10 px-4 py-12 lg:grid-cols-[1.2fr_0.9fr] xl:px-8">
                 <section class="hidden rounded-[2rem] bg-gradient-to-br from-emerald-700 via-slate-900 to-slate-950 p-10 text-white shadow-2xl lg:block">
                     <div class="max-w-xl space-y-6">
-                        <span class="inline-flex rounded-full bg-white/10 px-4 py-2 text-xs uppercase tracking-[0.3em] text-emerald-100">{{ config('app.name', 'SignatureSuite') }}</span>
+                        <span class="inline-flex rounded-full bg-white/10 px-4 py-2 text-xs uppercase tracking-[0.3em] text-emerald-100">{{ config('app.name') }}</span>
                         <h1 class="text-4xl font-semibold leading-tight">Secure access for staff and signature cards</h1>
                         <p class="text-sm leading-6 text-emerald-100/85">Fast, trusted login built for staff and admins. Manage members, users, and member card details with confidence.</p>
 

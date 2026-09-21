@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', config('app.name', 'SignatureSuite') . ' — ' . (auth()->user()->isCentralAdmin() ? 'Add Branch Admin' : 'Add Staff'))
+@section('title', config('app.name') . ' — ' . (auth()->user()->isCentralAdmin() ? 'Add Branch Admin' : 'Add Staff'))
 @section('page-heading', auth()->user()->isCentralAdmin() ? 'Add Branch Admin' : 'Add Staff')
 
 @section('content')

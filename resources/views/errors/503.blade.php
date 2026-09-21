@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>503 Service Unavailable — {{ config('app.name', 'SignatureSuite') }}</title>
+    <title>503 Service Unavailable — {{ config('app.name') }}</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="min-h-screen bg-slate-950 text-white">

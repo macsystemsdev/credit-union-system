@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', config('app.name', 'SignatureSuite') . ' - Reset Password')
+@section('title', config('app.name') . ' - Reset Password')
 @section('page-heading', 'Reset Password')
 
 @section('content')

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', config('app.name', 'SignatureSuite') . ' - Dashboard')
+@section('title', config('app.name') . ' - Dashboard')
 @section('page-heading', 'Dashboard')
 
 @section('content')
